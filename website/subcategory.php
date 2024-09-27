@@ -8,9 +8,9 @@ $c_id=$_GET['c_id'];
 ?>
             
 <div id="tooplate_main">
-<table align="center" style="margin-left:30px">
+<table align="center" style="margin-left:60px">
 	<tr>
-    	<td colspan="3" align="left" height="10">
+    	<td colspan="6" align="left" height="5">
 		<img src="images/<?php echo $cat['s_img']; ?>." onclick="tmp()" height="65" width="65"/></td>
    	</tr>
 	
@@ -24,13 +24,13 @@ $c_id=$_GET['c_id'];
 	?>
 	<tr>
 		<?php
-			$count=2;
+			$count=1;
 		}
 		?>
 
 	<td align="center"  style="padding-right:15px;padding-left:15px;paddind-top:15px">
 	<a href="product.php?s_id=<?php echo $prods['s_id'];?>">
-	<img src="images/<?php echo $prods['s_img']; ?>." alt="Img" width="180" height="180"><br/></a>
+	<img src="images/<?php echo $prods['s_img']; ?>." alt="Img" width="280" height="300"><br/></a>
 
 	<a href="product.php?s_id=<?php echo $prods['s_id'];?>" style="font-size:24px"> 
 	<?php echo $prods['s_nm'] ; ?><br /><br /></a>

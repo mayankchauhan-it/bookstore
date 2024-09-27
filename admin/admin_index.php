@@ -1,6 +1,7 @@
+
 <?php 
 //include"header.php";
-include "admin/connection.php";
+include "../admin/connection.php";
 session_start();
 if($_SESSION['a_nm'] == "")
 {

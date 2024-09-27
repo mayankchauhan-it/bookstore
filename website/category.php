@@ -1,11 +1,11 @@
 
 <?php
-include "header.php";
-include "connection.php";
+include "../website/header.php";
+include "../website/connection.php";
 session_start();
 ?>
 <div id="tooplate_main">
-<table align="center" style="margin-left:375px">
+<table align="center" style="margin-left:60px">
 <tr>
 	<th colspan="6">
 		<h1 align="center">CATEGORY</h1>
@@ -27,7 +27,7 @@ session_start();
 	?>
 		<td width="120px">	
 
-		<a href="subcategory.php?c_id=<?php echo $cat['c_id'];?>"style="font-size:35px"><img src="images/<?php echo $cat['c_image']; ?>." alt="Img" width="280" height="300" /><br />
+		<a href="subcategory.php?c_id=<?php echo $cat['c_id'];?>"style="font-size:32px"><img src="images/<?php echo $cat['c_image']; ?>." alt="Img" width="280" height="300" /><br />
 	
 		
 	<?php 

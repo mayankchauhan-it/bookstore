@@ -9,13 +9,13 @@ include "../website/header.php";
 	{
 	$msg=" ";
 	//p1 is an array of products added by user into the cart
-		$arr=$_POST['p1']
+	$arr = $_POST['p1'];
 		/*foreach($arr as $key=>$value)
 		{
 		echo $key . "   ";
 		}
 		exit;*/
-		foreach($arr as $key=>$value)
+	foreach ($arr as $key => $value)
 		{
 			$cart="select i_id from cart where c_id=".$key;
 			$tmp=mysqli_query($cart);
