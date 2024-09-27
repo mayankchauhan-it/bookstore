@@ -31,5 +31,6 @@ $insert=(mysqli_query("insert into category(c_nm,c_image)values('$Name','$new_fi
 	
 	header("Location:view_product.php?msg=$msg");
 
-<?php 
-include "../admin/components/footer.php";?>
+
+include "../admin/components/footer.php";
+?>

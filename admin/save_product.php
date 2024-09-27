@@ -31,14 +31,14 @@ if(isset($_POST['submit']))
 {
 
 
-$insert=(mysqli_query("insert into items(i_nm,s_id,i_image,i_price,i_qnt,tot_qty) values('$Name',$s_id,'$new_file_name',$price,1,$qty)"));
+$insert=(mysqli_query($db,"insert into items(i_nm,s_id,i_image,i_price,i_qnt,tot_qty) values('$Name',$s_id,'$new_file_name',$price,1,$qty)"));
 		if($insert)
 			$msg='Item has been added successfully';
 		else
 			$msg='Item has not been added successfully';
 	}
 	
-	header("Location:product.php?msg=$msg & s_id=$s_id");
+	header("Location:view_product.php?msg=$msg & s_id=$s_id");
 ?>
 <?php 
 include "../admin/components/footer.php";?>
