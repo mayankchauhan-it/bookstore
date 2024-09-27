@@ -1,6 +1,6 @@
 body {
   font-family: "Poppins", sans-serif;
-  color: #000000;
+  color: #b82e8a00;
   background-color: #ffffff;
 }
 
@@ -63,7 +63,7 @@ body {
 .hero_area {
   height: 100vh;
   background-color: #b5caee;
-  background-image: url(../images/hero-bg.jpg);
+  background-image: url(../images/main_img3.jpg);
   background-size: cover;
 }
 
