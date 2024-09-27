@@ -1,5 +1,5 @@
  <?php
-include "admin/connection.php";
+include "../admin/connection.php";
 session_start();
 //include "header.php";
 ?>

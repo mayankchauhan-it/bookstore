@@ -1,7 +1,7 @@
 
 <?php
-include "../website/header.php";
-include "../website/connection.php";
+include "header.php";
+include "connection.php";
 session_start();
 ?>
 <div id="tooplate_main">

@@ -19,7 +19,7 @@ $c_id=$_GET['c_id'];
 	$count=1;
 	while($prods=mysqli_fetch_array($sel))
 	{
-		if($count>2)
+		if($count>3)
 		{
 	?>
 	<tr>

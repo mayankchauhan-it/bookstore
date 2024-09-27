@@ -1,267 +1,194 @@
 <?php
 include "connection.php";
-//include "header.php";
+include "header.php";
 
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<script type="text/javascript">
+function validate(frm)
+{
+	if(frm.u_nm.value == "")
+	{
+		alert("enter user name");
+		frm.u_nm.focus();
+		return false;
+	}
+	else if(frm.password.value == "")
+	{
+		alert("enter user password");
+		frm.password.focus();
+		return false;
+	}
+	else if(frm.cpwd.value == "")
+	{
+		alert("enter user confirm password");
+		frm.cpwd.focus();
+		return false;
+	}
+	else if(frm.address.value == "")
+	{
+		alert("enter user address");
+		frm.address.focus();
+		return false;
+	}
+	else if(frm.city.value == "")
+	{
+		alert("enter user city name");
+		frm.city.focus();
+		return false;
+	}
+	else if(frm.state.value == "")
+	{
+		alert("enter user state name");
+		frm.state.focus();
+		return false;
+	}
+	else if(frm.pno.value == "")
+	{
+		alert("enter user contact no");
+		frm.pno.focus();
+		return false;
+	}
+	else if(frm.email.value == "")
+	{
+		alert("enter user email id");
+		frm.email.focus();
+		return false;
+	}
+	else if(frm.password.value!=frm.cpwd.value)
+	{
+		alert("reenter your correct password");
+		frm.password.focus();
+		return false;
+	}
+	
+	/*else if(frm.cap.value != frm.h1.value)
+	{
+		document.write(frm.h1.value);
+		var b= <?php echo $a; ?>;
+		alert(b);
+		alert("enter right code");
+		frm.cap.focus();
+		return false;
+	}*/
+	return true;	
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Responsive Registration Form | CodingLab </title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-    }
+function onlyNumbers(e)
+{
+	var charCode=e.which || e.keyCode;
+	//8-back space 9-tab key 48-57 0 to 9
+	if((charCode >= 48 && charCode <=57) || charCode==9 || charCode==8)
+	return true;
+	
+	return false;
+}
 
-    body {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    }
 
-    .container {
-        max-width: 700px;
-        width: 100%;
-        background-color: #fff;
-        padding: 25px 30px;
-        border-radius: 5px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    }
+function onlyChar(e)
+{
+	var charCode=e.which || e.keyCode;
+	if((charCode >= 65 && charCode <=90)|| (charCode >= 97 && charCode <=122) || charCode==9 || charCode==46 || charCode==8)
+	return true;
+	
+	return false;
+}
 
-    .container .title {
-        font-size: 50px;
-        font-weight: 500;
-        position: relative;
-    }
+function email1()
+{
+	var reg=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	if(reg.test(frm.email.value) == false)
+	{
+		alert ('invalid email address');
+		frm.email.focus();
+		return false;
+		
+	}
+}
+</script>
 
-    .container .title::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 3px;
-        width: 30px;
-        border-radius: 5px;
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    }
+	
 
-    .content form .user-details {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 20px 0 12px 0;
-    }
 
-    form .user-details .input-box {
-        margin-bottom: 15px;
-        width: calc(100% / 2 - 20px);
-    }
+	<div id="contents">
+		<div id="adbox">
+			<!--<img src="image/indian-sweets.jpg" height="300" width="600" alt="Img">-->
 
-    form .input-box span.details {
-        display: block;
-        font-weight: 500;
-        margin-bottom: 5px;
-    }
 
-    .user-details .input-box input {
-        height: 45px;
-        width: 100%;
-        outline: none;
-        font-size: 16px;
-        border-radius: 5px;
-        padding-left: 15px;
-        border: 1px solid #ccc;
-        border-bottom-width: 2px;
-        transition: all 0.3s ease;
-    }
 
-    .user-details .input-box input:focus,
-    .user-details .input-box input:valid {
-        border-color: #9b59b6;
-    }
+<table width="600" height="450" align="center" cellpadding="7">
 
-    form .gender-details .gender-title {
-        font-size: 20px;
-        font-weight: 500;
-    }
+<form  action="reg.php"  name="frm" method="POST"  onsubmit="return validate(this)">
+			<?php
+			if(isset($_GET['msg']))
+			echo $_GET['msg'];
+			?><br />
 
-    form .category {
-        display: flex;
-        width: 80%;
-        margin: 14px 0;
-        justify-content: space-between;
-    }
+<tr> <td colspan="2" align="center"><h1>Registration</h1></td>
+</tr>
 
-    form .category label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
+<tr>
+  <td style="font-size:24px" width="200">Username  : </td>
+ 	<td width="0"><input type="text" name="u_nm" style="font-size:20px" height="50" width="52" onkeydown="return onlyChar(event);"/></td>
+	</tr>
+<tr> 
+  <td style="font-size:24px">Password  :</td>
+	
+	<td><input type="password" name="password" style="font-size:20px" height="50" width="50"/></td>
+</tr>
+	
+<tr>
+    <td style="font-size:24px">ConfirmPassword  :</td>
+	
+	<td><input type="password" name="c_pass" style="font-size:20px" height="50" width="50"/></td>
+</tr>
 
-    form .category label .dot {
-        height: 18px;
-        width: 18px;
-        border-radius: 50%;
-        margin-right: 10px;
-        background: #d9d9d9;
-        border: 5px solid transparent;
-        transition: all 0.3s ease;
-    }
+<tr>
+    <td style="font-size:24px">Birth_date :</td>
+	
+	<td><input type="date" name="birth_dt" style="font-size:20px" height="50" width="50"/></td>
+</tr>
 
-    #dot-1:checked~.category label .one,
-    #dot-2:checked~.category label .two,
-    #dot-3:checked~.category label .three {
-        background: #9b59b6;
-        border-color: #d9d9d9;
-    }
+<tr>
+<td style="font-size:24px">Address  :</td>
 
-    form input[type="radio"] {
-        display: none;
-    }
+<td><textarea name="address" rows="5" cols="20" style="font-size:18px" height="50" width="50"></textarea></td>
+</tr>
+<tr>
+<td style="font-size:24px">City  :</td>
 
-    form .button {
-        height: 45px;
-        margin: 35px 0
-    }
+<td><input type="text" name="city" style="font-size:20px" height="50" width="50"/></td>
+</tr>
+<tr>
+<td style="font-size:24px">state  :</td>
 
-    form .button input {
-        height: 100%;
-        width: 100%;
-        border-radius: 5px;
-        border: none;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 500;
-        letter-spacing: 1px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    }
+<td><input name="state" rows="5" cols="20" style="font-size:20px" height="50" width="50"></td>
+</tr>
 
-    form .button input:hover {
-        background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-    }
+<tr>
+	  <td style="font-size:24px">Phone No  :</td>
+  		
+    <td><input type="text" name="pno"  style="font-size:20px" height="50" width="50" onkeydown="return onlyNumbers(event);"/></td>
+</tr>
+<tr>
+	  <td style="font-size:24px">Email id  :</td>
+  		
+    <td><input type="text" name="email" style="font-size:20px" height="50" width="50" onBlur="return email1();"/></td>
+</tr>
+<!--<tr>
+	  <td style="font-size:24px"><img src="captcha.php"/></td>
+	<input type="hidden" name="h1" value="/>
+	
+ <td><input type="text" name="cap" style="font-size:20px" height="50" width="150" onkeydown="return validate(this);"/></td>
+</tr>-->
 
-    /* Responsive media query code for mobile devices */
-    @media(max-width: 584px) {
-        .container {
-            max-width: 100%;
-        }
-
-        form .user-details .input-box {
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        form .category {
-            width: 100%;
-        }
-
-        .content form .user-details {
-            max-height: 300px;
-            overflow-y: scroll;
-        }
-
-        .user-details::-webkit-scrollbar {
-            width: 5px;
-        }
-    }
-
-    /* Responsive media query code for mobile devices */
-    @media(max-width: 459px) {
-        .container .content .category {
-            flex-direction: column;
-        }
-    }
-</style>
-
-<body>
-    <div class="container">
-        <!-- Title section -->
-        <div class="content">
-            <!-- Registration form -->
-            <h4 class="title">Registration</h4>
-            <form action="#">
-                <div class="user-details">
-
-                    <!-- Input for Full Name -->
-                    <div class="input-box">
-                        <span class="details">Full Name</span>
-                        <input type="text" placeholder="Enter your name" required>
-                    </div>
-                    <!-- Input for Username -->
-                    <div class="input-box">
-                        <span class="details">Username</span>
-                        <input type="text" placeholder="Enter your username" required>
-                    </div>
-                    <!-- Input for Email -->
-                    <div class="input-box">
-                        <span class="details">Email</span>
-                        <input type="text" placeholder="Enter your email" required>
-                    </div>
-                    <!-- Input for Phone Number -->
-                    <div class="input-box">
-                        <span class="details">Phone Number</span>
-                        <input type="text" placeholder="Enter your number" required>
-                    </div>
-                    <!-- Input for Password -->
-                    <div class="input-box">
-                        <span class="details">Password</span>
-                        <input type="text" placeholder="Enter your password" required>
-                    </div>
-                    <!-- Input for Confirm Password -->
-                    <div class="input-box">
-                        <span class="details">Confirm Password</span>
-                        <input type="text" placeholder="Confirm your password" required>
-                    </div>
-                </div>
-                <div class="gender-details">
-                    <!-- Radio buttons for gender selection -->
-                    <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">
-                    <input type="radio" name="gender" id="dot-3">
-                    <span class="gender-title">Gender</span>
-                    <div class="category">
-                        <!-- Label for Male -->
-                        <label for="dot-1">
-                            <span class="dot one"></span>
-                            <span class="gender">Male</span>
-                        </label>
-                        <!-- Label for Female -->
-                        <label for="dot-2">
-                            <span class="dot two"></span>
-                            <span class="gender">Female</span>
-                        </label>
-                        <!-- Label for Prefer not to say -->
-                        <label for="dot-3">
-                            <span class="dot three"></span>
-                            <span class="gender">Prefer not to say</span>
-                        </label>
-                    </div>
-                </div>
-                <!-- Submit button -->
-                <div class="button">
-                    <input type="submit" value="Register">
-                </div>
-            </form>
-        </div>
-    </div>
-</body>
-
-</html>
-
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="Register now" style="font-size:24px"/></td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value="Cancle" style="font-size:24px"/></td></tr>
+</form>	
+</table>
+</div>
+</div>
+<?php include "footer.php"; ?>
 		
 
 

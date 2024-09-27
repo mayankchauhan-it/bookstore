@@ -1,7 +1,7 @@
 <?php
 //session_start();
 ob_start();
-$host = "localhost:3306";
+$host = "localhost:3308";
 $user = "root";
 $password = "";
 $dbname= "horizon";

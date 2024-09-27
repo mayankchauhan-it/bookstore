@@ -1,5 +1,5 @@
 <?php
-include "admin/connection.php";
+include "../admin/connection.php";
 session_start();
 $adminname = $_POST['a_nm'];
 $password =  $_POST['a_pass'];
